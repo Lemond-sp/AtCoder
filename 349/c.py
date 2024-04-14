@@ -1,3 +1,9 @@
+"""
+不正解の例
+rinata
+NRT
+"""
+
 s = input()
 t = input()
 s = s.upper()

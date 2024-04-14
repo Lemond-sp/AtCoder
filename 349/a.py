@@ -1,10 +1,6 @@
-s = int(input())
-a = input().split()
+n = int(input())
 
-print(s)
-print(a)
-n = 0
-for i in a:
-    n += int(i)
+# int型にmapしておく
+a = list(map(int, input().split()))
 
-print(-n)
+print(-sum(a))
