@@ -1,24 +1,16 @@
-import itertools
+N = int(input())
+A = list(map(int, input().split()))
+M = 10**8
 
-n = int(input())
-a = list(map(int, input().split()))
+cnt = [0] * (M + 1)
+for a in A:
+    cnt[a] += 1
+for i in range(M):
+    cnt[i + 1] += cnt[i]
 
-
-def f(a, b):
-    k = str(a + b)
-    if len(k) < 8:
-        res = a + b
-    else:
-        res = int(k[len(k) - 8 :])
-
-    return res
-
-
-res = 0
-sum = 0
-for v in itertools.combinations(range(n), 2):
-    res += f(a[v[0]], a[v[1]])
-
-print(res)
-# print(res)
-# print((a[0] + a[1]) % pow(10, 8))
+p = 0
+for a in A:
+    p += N - cnt[M - a - 1]
+    if 2 * a >= M:
+        p -= 1
+print((N - 1) * sum(A) - p // 2 * M)
